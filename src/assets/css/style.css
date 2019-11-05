@@ -1,0 +1,33 @@
+.title {
+    padding: 10px;
+    background: #ddecf7;
+    border-bottom: 2px solid #2d8cf0;
+    color: #2d8cf0;
+}
+
+.blue-text {
+    color: #2d8cf0;
+}
+
+.ivu-page {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.fr {
+    float: right;
+}
+
+.table td,
+.table th {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.text-c {
+    text-align: center;
+}
+
+.text-r {
+    text-align: right;
+}
