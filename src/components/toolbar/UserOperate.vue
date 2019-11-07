@@ -6,11 +6,25 @@
  -->
 <template>
   <div class="user-oprate">
-      <div><a>登录</a></div>
+      <div><a @click="gotoLogin">登录</a></div>
       <div><a>注册</a></div>
       <div><a>个人中心</a></div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+    gotoLogin:function (){
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
   .user-oprate{
     float:right;

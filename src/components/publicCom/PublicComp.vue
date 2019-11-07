@@ -1,6 +1,6 @@
 <template>
   <div class="post-wrap">
-     <div class="title">发布帖子  <el-button type="danger" size="mini" class="fr" @click="createTopic();">发 布</el-button></div>
+     <div class="title">发布帖子  <el-button type="danger" size="mini" class="fr" @click="createTopic">发 布</el-button></div>
      <table class="table">
        <tr>
          <th width="160">文章标题</th>
@@ -119,7 +119,6 @@ import '../../../static/ueditor/utf8/ueditor.parse.js'
 import '../../../static/ueditor/utf8/lang/zh-cn/zh-cn.js'
 
 import {post} from "../../api/http";
-
 export default {
     data(){
       return{
@@ -141,13 +140,29 @@ export default {
         this.topic.content = this.ue.getPlainTxt();
         post('/topic/create',this.topic).then(res=>{
           if (res.errCode=='0'){
-            alert("发帖成功！");
+            this.$alert('发帖成功咯！(*^▽^*)', '温馨提示', {
+              confirmButtonText: '确定',
+              callback: action => {
+                this.$message({
+                  type: 'success',
+                  message:'恭喜您吐槽成功！'
+                });
+              }
+            });
           }else{
             alert(res.errMsg);
           }
         }).catch(error=>{
-            alert("发帖异常！")
-            console.log(error);
+          this.$alert('发帖失败了哦 o(╥﹏╥)o ！', '温馨提示', {
+              confirmButtonText: '确定',
+              callback: action => {
+                this.$message({
+                  type: 'error',
+                  message:error
+                });
+              }
+            });
+            //console.log(error);
         })
       }
     }

@@ -7,6 +7,7 @@ import Partten from '../components/content/Partten.vue'
 import ViewPostDetail from '../components/viewPost/ViewPostDetail.vue'
 import PublicComp from '../components/publicCom/PublicComp.vue'
 import SameComp from '../components/sameComp/SameComp.vue'
+import Login from '../components/login/Login.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -20,5 +21,6 @@ export default new Router({
         { path: '/view/detailPost/:code/:id', component: ViewPostDetail },
         { path: '/publicPost', component: PublicComp },
         { path: '/view/friendNavInfo/:id', component: SameComp },
+        { path: '/login', component: Login }
     ]
 })
