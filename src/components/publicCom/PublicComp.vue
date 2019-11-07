@@ -1,11 +1,11 @@
 <template>
   <div class="post-wrap">
-     <div class="title">发布帖子  <el-button type="danger" size="mini" class="fr">发 布</el-button></div>
+     <div class="title">发布帖子  <el-button type="danger" size="mini" class="fr" @click="createTopic();">发 布</el-button></div>
      <table class="table">
        <tr>
          <th width="160">文章标题</th>
          <td>
-             <i-input :value.sync="value" placeholder="请输入..." ></i-input>
+             <i-input v-model.sync="topic.title" placeholder="请输入..." ></i-input>
          </td>
        </tr>
        <tr>
@@ -118,14 +118,33 @@ import '../../../static/ueditor/utf8/ueditor.all.js'
 import '../../../static/ueditor/utf8/ueditor.parse.js'
 import '../../../static/ueditor/utf8/lang/zh-cn/zh-cn.js'
 
-  export default {
+import {post} from "../../api/http";
+
+export default {
     data(){
       return{
-        ue:null
+        ue:null,
+        topic:{
+          id : '',
+          title : '',
+          content : '',
+          userId : '',
+          typeId : ''
+        }
       }
     },
     mounted(){
-      this.ue = UE.getEditor('editor')
+      this.ue = UE.getEditor('editor');
+    },
+    methods:{
+      createTopic:function () {
+        this.topic.content = this.ue.getPlainTxt();
+        post('/topic/create',this.topic).then(res=>{
+
+        }).catch(error=>{
+
+        })
+      }
     }
   }
 </script>
