@@ -18,6 +18,7 @@ export function get(url, params) {
             })
             .catch(error => {
                 reject(error);
+                console.log();
             });
     });
 }
