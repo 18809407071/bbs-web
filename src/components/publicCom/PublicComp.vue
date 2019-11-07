@@ -140,9 +140,14 @@ export default {
       createTopic:function () {
         this.topic.content = this.ue.getPlainTxt();
         post('/topic/create',this.topic).then(res=>{
-
+          if (res.errCode=='0'){
+            alert("发帖成功！");
+          }else{
+            alert(res.errMsg);
+          }
         }).catch(error=>{
-
+            alert("发帖异常！")
+            console.log(error);
         })
       }
     }
